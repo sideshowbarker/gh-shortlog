@@ -21,9 +21,9 @@ fzf_launch() {
     --pointer ▶ \
     --no-scrollbar \
     --preview-window=border-line,~5 \
-    --preview "printf '\n\n\n\n\n'; git log --no-patch --color --author={4}" \
+    --preview "printf '\n\n\n\n\n'; git log --no-patch --color --author={5}" \
     --bind "ctrl-b:preview-page-up,ctrl-f:preview-page-down" \
-    --bind "enter:execute(git log --patch-with-stat --color --author={4})" \
+    --bind "enter:execute(git log --patch-with-stat --color --author={5})" \
     --bind "ctrl-o:execute(shortlog {q} | nl | fzf_launch {q})" \
     --bind "ctrl-q:accept" \
     --multi \
