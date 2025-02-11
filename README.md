@@ -2,7 +2,7 @@
 
 [fzf](https://github.com/junegunn/fzf#installation)-built [GitHub CLI](https://github.com/cli/cli) extension [TUI](https://en.wikipedia.org/wiki/Text-based_user_interface) `git shortlog` frontend — to interactively explore contributor data for any repo
 
-![image](https://github.com/user-attachments/assets/76772163-b8e6-4fc0-9c75-6df68b6b59f4)
+<img alt="screenshot of gh-shortlog" src="https://github.com/user-attachments/assets/413c5c74-d143-4bfc-b564-4d842b83123c" />
 
 ## Install
 
