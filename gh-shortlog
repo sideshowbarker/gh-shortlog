@@ -24,7 +24,10 @@ fzf_launch() {
     --preview "printf '\n\n\n\n\n'; git log --no-patch --color --author={4}" \
     --bind "ctrl-b:preview-page-up,ctrl-f:preview-page-down" \
     --bind "enter:execute(git log --patch-with-stat --color --author={4})" \
-    --bind "ctrl-o:execute(shortlog {q} | nl | fzf_launch {q})"
+    --bind "ctrl-o:execute(shortlog {q} | nl | fzf_launch {q})" \
+    --bind "ctrl-q:accept" \
+    --multi \
+    --print-query
 }
 export -f fzf_launch
 format_output() {

@@ -28,15 +28,18 @@ gh shortlog
 
 | Key    | Action                                                        |
 | ------ | ------------------------------------------------------------- |
-| `Ctrl‑O` | Filter the log down to use the commits made after the date entered into the prompt.|
-| `Enter`  | Open a new window with a diffs-included log of all commits by the author at the current pointer. |
-| `Ctrl‑C` | Exit `gh-shortlog`, or else go back to the previous screen withing `gh-shortlog`. |
-| `Ctrl‑F` | Scroll the preview window one page forward. |
-| `Ctrl‑B` | Scroll the preview window one page back. |
-| `Ctrl‑J` | Scroll the pointer/selection down. |
-| `Ctrl‑K` | Scroll the pointer/selection up. |
-| `Ctrl‑N` | Scroll the pointer/selection down. |
-| `Ctrl‑P` | Scroll the pointer/selection up. |
-| `Ctrl‑U` | Clear the prompt. |
+| `Ctrl‑O`     | Filter the log down to use the commits made after the date entered into the prompt.|
+| `Enter`      | Open a new window with a diffs-included log of all commits by the author at the current pointer. |
+| `Ctrl‑C`     | Exit `gh-shortlog`, or else go back to the previous screen withing `gh-shortlog`. |
+| `Ctrl‑F`     | Scroll the preview window one page forward. |
+| `Ctrl‑B`     | Scroll the preview window one page back. |
+| `Ctrl‑J`     | Scroll the pointer to the next name down. |
+| `Ctrl‑K`     | Scroll the pointer to next name up. |
+| `Ctrl‑N`     | Scroll the pointer to the next name down. |
+| `Ctrl‑P`     | Scroll the pointer to the next name up. |
+| `Ctrl‑U`     | Clear the prompt. |
+| `tab`        | Toggle selection of the name at the pointer and move to the next name down. |
+| `shift-tab`  | Toggle selection of the name at the pointer and move to the next name up. |
+| `Ctrl‑Q`     | Exit and output the selected items. |
 
 You can also use your mouse: click moves the selection; double-click has the same effect as the `Enter` key.
