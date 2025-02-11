@@ -39,4 +39,4 @@ gh shortlog
 | `Ctrl‑P` | Scroll the pointer/selection up. |
 | `Ctrl‑U` | Clear the prompt. |
 
-You can also use your mouse: clicking moves the selection; double-clicking has the same effect as the `Enter` key.
+You can also use your mouse: click moves the selection; double-click has the same effect as the `Enter` key.
