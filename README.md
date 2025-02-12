@@ -33,10 +33,10 @@ gh shortlog
 | `Ctrl‑C`     | Exit `gh-shortlog`, or else go back to the previous screen withing `gh-shortlog`. |
 | `Ctrl‑F`     | Scroll the preview window one page forward. |
 | `Ctrl‑B`     | Scroll the preview window one page back. |
-| `Ctrl‑J`     | Scroll the pointer to the next name down. |
-| `Ctrl‑K`     | Scroll the pointer to next name up. |
-| `Ctrl‑N`     | Scroll the pointer to the next name down. |
-| `Ctrl‑P`     | Scroll the pointer to the next name up. |
+| `Ctrl‑J`     | Scroll the pointer in the main window to the next name down. |
+| `Ctrl‑K`     | Scroll the pointer in the main window to next name up. |
+| `Ctrl‑N`     | Scroll the pointer in the main window to the next name down. |
+| `Ctrl‑P`     | Scroll the pointer in the main window to the next name up. |
 | `Ctrl‑U`     | Clear the prompt. |
 | `tab`        | Toggle selection of the item (author name) at the pointer and move to the next name down. |
 | `shift‑tab`  | Toggle selection of the item (author name) at the pointer and move to the next name up. |
