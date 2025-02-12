@@ -38,8 +38,8 @@ gh shortlog
 | `Ctrl‑N`     | Scroll the pointer to the next name down. |
 | `Ctrl‑P`     | Scroll the pointer to the next name up. |
 | `Ctrl‑U`     | Clear the prompt. |
-| `tab`        | Toggle selection of the name at the pointer and move to the next name down. |
-| `shift‑tab`  | Toggle selection of the name at the pointer and move to the next name up. |
-| `Ctrl‑Q`     | Exit and output the list of items selected. |
+| `tab`        | Toggle selection of the item (author name) at the pointer and move to the next name down. |
+| `shift‑tab`  | Toggle selection of the item (author name) at the pointer and move to the next name up. |
+| `Ctrl‑Q`     | Exit (or go back one screen) — and then, on final program exit, output the list of items selected. |
 
 You can also use your mouse: click moves the selection; double-click has the same effect as the `Enter` key.
