@@ -23,8 +23,8 @@ gh ext remove sideshowbarker/gh-shortlog
 gh shortlog
 ```
 
-- Type a date into the prompt and then do `Ctrl-O`: `gh-shortlog` will change to showing a log/history for only those changes made after your specified date.
-- Type a name or e-mail address into the prompt: `gh-shortlog` will dynamically filter the list of authors down to just those who match what you typed into the prompt.
+- Type a date into the prompt and then do `Ctrl-O`: then, `gh-shortlog` will change to showing a log/history for only those changes made after your specified date.
+- Type a name or e-mail address into the prompt: then, `gh-shortlog` will dynamically filter the list of authors down to just those who match what you typed into the prompt.
 
 | Key    | Action                                                        |
 | ------ | ------------------------------------------------------------- |
