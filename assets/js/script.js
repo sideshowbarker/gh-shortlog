@@ -11,13 +11,6 @@ replaceOnDocument(/\[!IMPORTANT\]/g, "👋 Important: ");
 replaceOnDocument(/\[!NOTE\]/g, "👉 Note: ");
 replaceOnDocument(/https:\/\/github.com\/meiji163\/gh-notify\/assets\/92653266\/b7d7fcdb-8a25-43fc-8f63-d11f30960084/g,"")
 
-const p = document.querySelector("h1").nextElementSibling;
-const video = document.createElement("video");
-video.setAttribute("src", "https://github.com/meiji163/gh-notify/assets/92653266/b7d7fcdb-8a25-43fc-8f63-d11f30960084");
-video.setAttribute("controls", "");
-video.setAttribute("width", "800");
-p.insertAdjacentElement("afterend", video);
-
 anchors.options.placement = 'left';
 document.addEventListener('DOMContentLoaded', function(event) { anchors.add(); });
 
