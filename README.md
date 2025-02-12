@@ -34,7 +34,7 @@ gh shortlog
 | `Ctrl‑F`     | Scroll the preview window one page forward. |
 | `Ctrl‑B`     | Scroll the preview window one page back. |
 | `Ctrl‑J`     | Scroll the pointer in the main window to the next name down. |
-| `Ctrl‑K`     | Scroll the pointer in the main window to next name up. |
+| `Ctrl‑K`     | Scroll the pointer in the main window to the next name up. |
 | `Ctrl‑N`     | Scroll the pointer in the main window to the next name down. |
 | `Ctrl‑P`     | Scroll the pointer in the main window to the next name up. |
 | `Ctrl‑U`     | Clear the prompt. |
