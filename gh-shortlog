@@ -23,7 +23,7 @@ fzf_launch() {
     --preview-window=border-line,~5 \
     --preview "printf '\n\n\n\n\n'; git log --no-patch --color --author={5}" \
     --bind "ctrl-b:preview-page-up,ctrl-f:preview-page-down" \
-    --bind "enter:execute(clear; git log --patch-with-stat --color --author={5}; printf '\nPress any key to go back...'; read -n 1 -r)" \
+    --bind "enter:execute(clear; git log -w --patch-with-stat --color --author={5}; printf '\nPress any key to go back...'; read -n 1 -r)" \
     --bind "ctrl-o:execute(shortlog {q} | nl | fzf_launch {q})" \
     --bind "ctrl-q:accept" \
     --multi \
