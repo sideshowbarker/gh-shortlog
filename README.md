@@ -30,6 +30,7 @@ gh shortlog
 | ------ | ------------------------------------------------------------- |
 | `Ctrl‑O`     | Filter the log down to use the commits made after the date entered into the prompt.|
 | `Enter`      | Show a diffs-included log of all commits by the author at the current pointer. |
+| `Ctrl‑W`     | Open GitHub log in a web browser
 | `Ctrl‑C`     | Exit `gh-shortlog`, or else go back to the previous screen within `gh-shortlog`. |
 | `Ctrl‑F`     | Scroll the preview window one page forward. |
 | `Ctrl‑B`     | Scroll the preview window one page back. |

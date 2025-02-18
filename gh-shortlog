@@ -1,11 +1,44 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2120
+date_file=$(mktemp)
+export date_file
+export remote_url_property=remote.origin.url
+if [ -n "$(git config --get remote.upstream.url)" ]; then
+  export remote_url_property=remote.upstream.url
+fi
+repo_url=$(git config --get $remote_url_property | sed -r \
+  's/.*(\@|\/\/)(.*)(\:|\/)([^:\/]*)\/([^\/]*)\.git/https:\/\/\2\/\4\/\5/')
+export repo_url
+org_and_repo=$(echo "$repo_url" | rev | cut -d '/' -f-2 | rev)
+export org_and_repo
+open_commit_history_for_author_in_web_browser() {
+  author="$(echo "$1" | tr -d "<>" | sed -E 's/^[^+]+\+([^@]+)@.*$/\1/')"
+  login=$(gh api  "/repos/$org_and_repo/commits?author=$author&per_page=1" --jq ".[] | .author.login")
+  $(command -v xdg-open || command -v start || command -v open) "https://github.com/$org_and_repo/commits?author=$login&since=$(cat "$date_file")"
+}
+export -f open_commit_history_for_author_in_web_browser
+git_log() {
+  if [ -n "$(cat "$date_file")" ]; then
+    git log --since="$(cat "$date_file")" --no-patch --color --author="$1"
+  else
+    git log --no-patch --color --author="$1"
+  fi
+}
+export -f git_log
+git_log_with_diffs() {
+  if [ -n "$(cat "$date_file")" ]; then
+    git log --since="$(cat "$date_file")" -w --patch-with-stat --color --author="$1"
+  else
+    git log -w --patch-with-stat --color --author="$1"
+  fi
+}
+export -f git_log_with_diffs
 fzf_launch() {
   fzf \
     --ansi \
     --delimiter " {2,}" \
-    --prompt "Type enter | name or email | a date & then ^O | or use ^C > "\
-    --header "keys: ^O: filter since given date; enter: show diffs; ^F,^B: preview ↑↓; ^C: exit/back"$'\n'"$( \
+    --prompt "Hit enter, or type: a name or email | a date & then ^O | or use ^C > "\
+    --header "keys: ^O: filter since given date; enter: show diffs; ^F,^B: preview ↑↓"$'\n'"      ^W: open GitHub log in web browser; ^C: exit/back"$'\n'"$( \
         [ -n "$1" ] \
         && echo -e "\e[1;36mTo filter to changes after a different date, enter another date above and then ^O.\e[0m"$'\n'"\e[1;33mShowing log for changes since \e[1;97m$1\e[1;33m, filtered to matches for the query (if any) above.\e[0m" \
         || echo -e "\e[1;36mTo filter to changes after a specific date, type a date above and then ^O.\e[0m"$'\n'"\e[1;33mShowing log for entire history, filtered to matches for the query (if any) above.\e[0m" \
@@ -20,12 +53,14 @@ fzf_launch() {
     --layout=reverse \
     --pointer ▶ \
     --no-scrollbar \
-    --preview-window=border-line,~5 \
-    --preview "printf '\n\n\n\n\n'; git log --no-patch --color --author={5}" \
+    --preview-window=border-line,~6 \
+    --preview "printf '\n\n\n\n\n\n'; git_log {5}" \
     --bind "ctrl-b:preview-page-up,ctrl-f:preview-page-down" \
-    --bind "enter:execute(clear; git log -w --patch-with-stat --color --author={5}; printf '\nPress any key to go back...'; read -n 1 -r)" \
+    --bind "enter:execute(clear; git_log_with_diffs {5}; printf '\nPress any key to go back...'; read -n 1 -r)" \
     --bind "ctrl-o:execute(shortlog {q} | nl | fzf_launch {q})" \
+    --bind "ctrl-c,esc:execute(echo '' > $date_file)+abort" \
     --bind "ctrl-q:accept" \
+    --bind "ctrl-w:execute(open_commit_history_for_author_in_web_browser {5})" \
     --multi \
     --print-query
 }
@@ -77,8 +112,13 @@ export -f format_output
 shortlog() {
     if [[ -n $1 ]]; then
       git shortlog -n -s -e --since="$1" | format_output
+      if date --date 2>/dev/null && command -v date || command -v gdate > /dev/null; then
+        # shellcheck disable=SC2015
+        echo -n "$($(date --date 2>/dev/null && command -v date || command -v gdate) +"%Y-%m-%dT%H:%M:%SZ" --date="$1")" > "$date_file"
+      fi
     else
       git shortlog -n -s -e | format_output
+      echo -n "" > "$date_file"
     fi
 }
 export -f shortlog
