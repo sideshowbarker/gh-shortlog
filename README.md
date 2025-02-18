@@ -20,7 +20,7 @@ gh ext remove sideshowbarker/gh-shortlog
 ## Usage
 
 ```
-gh shortlog
+gh shortlog [--no-mouse]
 ```
 
 - Type a date into the prompt and then do `Ctrl-O`: then, `gh-shortlog` will change to showing a log/history for only those changes made after your specified date.
@@ -44,3 +44,5 @@ gh shortlog
 | `Ctrl‑Q`     | Exit (or go back one screen) — and then, on final program exit, output the list of items selected. |
 
 You can also use your mouse: click in main window moves the selection; double-click has the same effect as the `Enter` key; mouse scroll in either main window or preview window scrolls the window contents.
+
+If you don’t want that mouse behavior, use the `--no-mouse` option.
