@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2120
 script_args=$*
-if [[ " $* " == *" --no-mouse "* ]]; then
-    no_mouse="--no-mouse"
-fi
 date_file=$(mktemp)
 export date_file
 export remote_url_property=remote.origin.url
