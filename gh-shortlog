@@ -17,7 +17,9 @@ export base_url
 open_commit_history_for_author_in_web_browser() {
   author="$(echo "$1" | tr -d "<>" | sed -E 's/^[^+]+\+([^@]+)@.*$/\1/')"
   login=$(gh api  "/repos/$org_and_repo/commits?author=$author&per_page=1" --jq ".[] | .author.login")
-  $(command -v xdg-open || command -v start || command -v open) "https://github.com/$org_and_repo/commits?author=$login&since=$(cat "$date_file")"
+  # shellcheck disable=SC2015
+  my_date=$($(date --date 2>/dev/null && command -v date || command -v gdate) +"%Y-%m-%dT%H:%M:%SZ" --date="$(cat "$date_file")")
+  $(command -v xdg-open || command -v start || command -v open) "https://github.com/$org_and_repo/commits?author=$login&since=$my_date"
 }
 export -f open_commit_history_for_author_in_web_browser
 git_log() {
@@ -118,8 +120,7 @@ shortlog() {
     if [[ -n $1 ]]; then
       git shortlog -n -s -e --since="$1" | format_output
       if date --date 2>/dev/null && command -v date || command -v gdate > /dev/null; then
-        # shellcheck disable=SC2015
-        echo -n "$($(date --date 2>/dev/null && command -v date || command -v gdate) +"%Y-%m-%dT%H:%M:%SZ" --date="$1")" > "$date_file"
+        echo -n "$1" > "$date_file"
       fi
     else
       git shortlog -n -s -e | format_output
