@@ -24,9 +24,9 @@ open_commit_history_for_author_in_web_browser() {
 export -f open_commit_history_for_author_in_web_browser
 git_log() {
   if [ -n "$(cat "$date_file")" ]; then
-    git log --since="$(cat "$date_file")" --no-patch --format=fuller --color --author="$1" | sed -E "s|commit ([0-9a-f]{10})[0-9a-f]{30}|commit $base_url/\1|"
+    git log --since="$(cat "$date_file")" --no-patch --format=fuller --notes --color --author="$1" | sed -E "s|commit ([0-9a-f]{10})[0-9a-f]{30}|commit $base_url/\1|"
   else
-    git log --no-patch --format=fuller --color --author="$1" | sed -E "s|commit ([0-9a-f]{10})[0-9a-f]{30}|commit $base_url/\1|"
+    git log --no-patch --format=fuller --notes --color --author="$1" | sed -E "s|commit ([0-9a-f]{10})[0-9a-f]{30}|commit $base_url/\1|"
   fi
 }
 export -f git_log
@@ -34,7 +34,7 @@ git_log_with_diffs() {
   if [ -n "$(cat "$date_file")" ]; then
     git log --since="$(cat "$date_file")" -w --patch-with-stat --format=fuller --color --author="$1"
   else
-    git log -w --patch-with-stat --format=fuller --color --author="$1"
+    git log -w --patch-with-stat --format=fuller --notes --color --author="$1"
   fi
 }
 export -f git_log_with_diffs
